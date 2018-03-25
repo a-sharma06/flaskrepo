@@ -17,7 +17,7 @@ def index():
     return render_template('index.html')
     
 
-@app.route('/about')
+@app.route('/about', methods=['GET', 'POST'])
 def about():
     #ticker = 'GOOG'
     ticker = request.form['ticker']
