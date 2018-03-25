@@ -1,8 +1,7 @@
 import requests
 import pandas as pd
 import io
-from bokeh.plotting import figure, output_file, show
-from bokeh.io import output_notebook
+from bokeh.plotting import figure
 from flask import Flask, render_template, request, redirect
 from bokeh.embed import components 
 
@@ -30,13 +29,12 @@ def about():
     p = figure(tools="pan,wheel_zoom,box_zoom,reset", title="Quandl WIKI EOD Stock Price - 2017", x_axis_label='Time', y_axis_label='Price', x_axis_type="datetime")
 
     # add a line renderer with legend and line thickness
-    p.line(y = rawData.Close, x = rawData.Date, legend = (string + ' - Closing Value'), line_width=2)
+    #p.line(y = rawData.Close, x = rawData.Date, legend = (string + ' - Closing Value'), line_width=2)
 
     script, div = components(p)
     
     # show the results
-    #show(p)
     return render_template('about.html',script=script, div=div)
 
 if __name__ == '__main__':
-   app.run(port=33507)
+   app.run()
