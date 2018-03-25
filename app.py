@@ -13,7 +13,7 @@ def index():
         ticker = request.form['ticker']
         features = request.form['features']
         return redirect(url_for('about',ticker = ticker, features = features))
-    return render_template('index.html')
+    
 
 @app.route('/about')
 def about(ticker, features):
