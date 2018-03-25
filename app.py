@@ -29,8 +29,8 @@ def about():
     p = figure(tools="pan,wheel_zoom,box_zoom,reset", title="Quandl WIKI EOD Stock Price - 2017", x_axis_label='Time', y_axis_label='Price', x_axis_type="datetime")
 
     # add a line renderer with legend and line thickness
-    plot = p.line(y = rawData.Close, x = rawData.Date, legend = (ticker + ' - Closing Value'), line_width=2)
-
+    #plot = p.line(y = rawData.Close, x = rawData.Date, legend = (ticker + ' - Closing Value'), line_width=2)
+    plot = p.line(y = rawData.Close, x = rawData.Date, line_width=2)
     script, div = components(plot)
     
     # show the results
