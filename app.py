@@ -19,8 +19,8 @@ def index():
 
 @app.route('/about', methods=['GET', 'POST'])
 def about():
-    ticker = 'GOOG'
-    #ticker = request.form['ticker']
+    #ticker = 'GOOG'
+    ticker = request.form['ticker']
     url = 'https://www.quandl.com/api/v3/datasets/WIKI/FB.csv?column_index=4&start_date=2017-01-01&end_date=2017-12-31&order=asc&ticker='+ticker+'&api_key=Bi6LQVQYYUMzFxnjxMV8'
     urlData = requests.get(url).content
     rawData = pd.read_csv(io.StringIO(urlData.decode('utf-8')))
@@ -29,7 +29,7 @@ def about():
     p = figure(tools="pan,wheel_zoom,box_zoom,reset", title="Quandl WIKI EOD Stock Price - 2017", x_axis_label='Time', y_axis_label='Price', x_axis_type="datetime")
 
     # add a line renderer with legend and line thickness
-    plot = p.line(y = rawData.Close, x = rawData.Date, legend = (string + ' - Closing Value'), line_width=2)
+    plot = p.line(y = rawData.Close, x = rawData.Date, legend = (ticker + ' - Closing Value'), line_width=2)
 
     script, div = components(plot)
     
