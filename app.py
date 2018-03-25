@@ -30,7 +30,7 @@ def about():
 
     # add a line renderer with legend and line thickness
     #plot = p.line(y = rawData.Close, x = rawData.Date, legend = (ticker + ' - Closing Value'), line_width=2)
-    plot = p.line(y = rawData.Close, x = rawData.Date, line_width=2)
+    plot = p.line(y = [1,2], line_width=2)
     script, div = components(plot)
     
     # show the results
