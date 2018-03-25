@@ -1,4 +1,4 @@
-Bimport requests
+import requests
 import pandas as pd
 import io
 from bokeh.plotting import figure
