@@ -9,11 +9,10 @@ app = Flask(__name__)
 
 @app.route('/', methods = ['POST', 'GET'])
 def index():
-    render_template('index.html')
     if request.method == 'POST':
         ticker = request.form['ticker']
         features = request.form['features']
-        return redirect(url_for('about',ticker = ticker, features = features))
+    return render_template('index.html')
     
 
 @app.route('/about')
