@@ -43,9 +43,9 @@ def about():
         i = i+1
 
     p.legend.location = "top_left"
-    p.legend.click_policy="hide"
+    #p.legend.click_policy="hide"
 
-    #p.line(y = rawData.Close, x = rawData.Date, legend = (ticker +  ' - Closing Value'), line_width=2)
+    
     script, div = components(p)
     
     # show the results
