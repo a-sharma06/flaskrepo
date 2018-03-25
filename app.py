@@ -38,9 +38,9 @@ def about():
 
     # add a line renderer with legend and line thickness
     #p.multi_line(xs=[rawData.Date.values]*len(cols),
-            ys=[rawData[x].values for x in cols],
-            line_color=Blues8[0:len(cols)],
-            line_width=2)
+    #        ys=[rawData[x].values for x in cols],
+    #        line_color=Blues8[0:len(cols)],
+    #        line_width=2)
     #toy_df.index.value
     p.line(y = rawData.Close, x = rawData.Date, legend = (ticker +  ' - Closing Value'), line_width=2)
     script, div = components(p)
