@@ -37,3 +37,6 @@ def about():
     # show the results
     #show(p)
     return render_template('about.html',script=script, div=div)
+
+if __name__ == '__main__':
+   app.run(debug = True)
