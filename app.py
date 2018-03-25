@@ -7,7 +7,7 @@ from flask import Flask, render_template, request, redirect
 
 app = Flask(__name__)
 
-@app.route('index')
+@app.route('/')
 def index():
     if request.method == 'POST':
         ticker = request.form['ticker']
