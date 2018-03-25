@@ -23,7 +23,7 @@ def index():
 def about():
     #ticker = 'GOOG'
     ticker = request.form['ticker']
-    features = request.form['features']
+    features = request.form.getlist('features')
     lookup = dict([('open','Open'),('close','Close'),('adj_close','Adj. Open'),('adj_open','Adj. Close')])
     cols = [lookup[x] for x in features]
     cols.append('Date')
@@ -37,12 +37,12 @@ def about():
     p = figure(tools="pan,wheel_zoom,box_zoom,reset", title='Quandl WIKI EOD Stock Price - 2017 ', x_axis_label='Time', y_axis_label='Price', x_axis_type="datetime")
 
     # add a line renderer with legend and line thickness
-    #p.multi_line(xs=[rawData.Date.values]*len(cols),
-    #        ys=[rawData[x].values for x in cols],
-    #        line_color=Blues8[0:len(cols)],
-    #        line_width=2)
-    #toy_df.index.value
-    p.line(y = rawData.Close, x = rawData.Date, legend = (ticker +  ' - Closing Value'), line_width=2)
+    p.multi_line(xs=[rawData.Date.values]*len(cols),
+            ys=[rawData[x].values for x in cols],
+            line_color=Blues8[0:len(cols)],
+            line_width=2)
+    
+    #p.line(y = rawData.Close, x = rawData.Date, legend = (ticker +  ' - Closing Value'), line_width=2)
     script, div = components(p)
     
     # show the results
