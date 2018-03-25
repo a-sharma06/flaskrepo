@@ -2,8 +2,10 @@ import requests
 import pandas as pd
 import io
 from bokeh.plotting import figure
+from bokeh.palettes import Spectral11, Blues8
 from flask import Flask, render_template, request, redirect
 from bokeh.embed import components 
+
 
 app = Flask(__name__)
 
@@ -37,7 +39,7 @@ def about():
     # add a line renderer with legend and line thickness
     p.multi_line(xs=[rawData.Date.values]*len(cols),
             ys=[rawData[x].values for x in cols],
-            line_color=['#084594','#4292c6','#c6dbef'],
+            line_color=Blues8[0:len(cols)],
             line_width=2)
     #toy_df.index.value
    #p.line(y = rawData.Close, x = rawData.Date, legend = (ticker +  ' - Closing Value'), line_width=2)
