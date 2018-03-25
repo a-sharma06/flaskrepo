@@ -36,12 +36,15 @@ def about():
     # create a new plot with a title and axis labels
     p = figure(tools="pan,wheel_zoom,box_zoom,reset", title='Quandl WIKI EOD Stock Price - 2017 ', x_axis_label='Time', y_axis_label='Price', x_axis_type="datetime")
 
-    # add a line renderer with legend and line thickness
-    p.multi_line(xs=[rawData.Date.values]*len(cols),
-            ys=[rawData[x].values for x in cols],
-            line_color=Blues8[0:len(cols)],
-            line_width=2)
-    
+    i=0
+    # add a line renderer with legend and line thickness                                                                                                                                       
+    for x in cols:
+        p.line(y = rawData[x], x = rawData.Date, legend = (ticker + ' ' + x + ' - Value'), line_width=2, line_color=Blues8[i])
+        i = i+1
+
+    p.legend.location = "top_left"
+    p.legend.click_policy="hide"
+
     #p.line(y = rawData.Close, x = rawData.Date, legend = (ticker +  ' - Closing Value'), line_width=2)
     script, div = components(p)
     
