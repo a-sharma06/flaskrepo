@@ -12,7 +12,8 @@ def index():
     if request.method == 'POST':
         ticker = request.form['ticker']
         features = request.form['features']
-        return redirect(url_for('about'))
+        return redirect("https://www.google.com")
+        #return redirect(url_for('about'))
     return render_template('index.html')
     
 
