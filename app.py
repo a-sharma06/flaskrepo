@@ -22,7 +22,7 @@ def about():
     #ticker = 'GOOG'
     ticker = request.form['ticker']
     features = request.form['features']
-    features = feature.replace('\n', ' ')
+    features = features.replace('\n', ' ')
     url = 'https://www.quandl.com/api/v3/datasets/WIKI/'+ticker+'.csv?column_index=4&start_date=2017-01-01&end_date=2017-12-31&order=asc&api_key=Bi6LQVQYYUMzFxnjxMV8'
     urlData = requests.get(url).content
     rawData = pd.read_csv(io.StringIO(urlData.decode('utf-8')))
