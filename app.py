@@ -9,17 +9,18 @@ app = Flask(__name__)
 
 @app.route('/', methods = ['POST', 'GET'])
 def index():
-    if request.method == 'POST':
-        ticker = request.form['ticker']
-        features = request.form['features']
-        return redirect("https://www.google.com")
+    #if request.method == 'POST':
+        #ticker = request.form['ticker']
+        #features = request.form['features']
+        #return redirect("https://www.google.com")
         #return redirect(url_for('about'))
     return render_template('index.html')
     
 
 @app.route('/about')
 def about():
-    ticker = 'GOOG'
+    #ticker = 'GOOG'
+    ticker = request.form['ticker']
     url = 'https://www.quandl.com/api/v3/datasets/WIKI/FB.csv?column_index=4&start_date=2017-01-01&end_date=2017-12-31&order=asc&ticker='+ticker+'&api_key=Bi6LQVQYYUMzFxnjxMV8'
     urlData = requests.get(url).content
     rawData = pd.read_csv(io.StringIO(urlData.decode('utf-8')))
