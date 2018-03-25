@@ -21,12 +21,13 @@ def index():
 def about():
     #ticker = 'GOOG'
     ticker = request.form['ticker']
+    features = request.form['features']
     url = 'https://www.quandl.com/api/v3/datasets/WIKI/'+ticker+'.csv?column_index=4&start_date=2017-01-01&end_date=2017-12-31&order=asc&api_key=Bi6LQVQYYUMzFxnjxMV8'
     urlData = requests.get(url).content
     rawData = pd.read_csv(io.StringIO(urlData.decode('utf-8')))
     rawData.Date = pd.to_datetime(rawData.Date)
     # create a new plot with a title and axis labels
-    p = figure(tools="pan,wheel_zoom,box_zoom,reset", title="Quandl WIKI EOD Stock Price - 2017", x_axis_label='Time', y_axis_label='Price', x_axis_type="datetime")
+    p = figure(tools="pan,wheel_zoom,box_zoom,reset", title='Quandl WIKI EOD Stock Price - 2017 '+features[0], x_axis_label='Time', y_axis_label='Price', x_axis_type="datetime")
 
     # add a line renderer with legend and line thickness
     p.line(y = rawData.Close, x = rawData.Date, legend = (ticker + ' - Closing Value'), line_width=2)
