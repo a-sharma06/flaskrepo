@@ -42,8 +42,8 @@ def about():
         p.line(y = rawData[x], x = rawData.Date, legend = (ticker + ' ' + x + ' - Value'), line_width=2, line_color=Blues8[i])
         i = i+1
 
-    p.legend.location = "top_left"
-    p.legend.click_policy="hide"
+    #p.legend.location = "top_left"
+    #p.legend.click_policy="hide"
 
     #p.line(y = rawData.Close, x = rawData.Date, legend = (ticker +  ' - Closing Value'), line_width=2)
     script, div = components(p)
