@@ -5,7 +5,7 @@ from bokeh.plotting import figure
 from bokeh.palettes import Spectral11, Blues8
 from flask import Flask, render_template, request, redirect
 from bokeh.embed import components 
-
+import os
 
 app = Flask(__name__)
 
